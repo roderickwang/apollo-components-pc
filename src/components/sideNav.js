@@ -1,7 +1,4 @@
 /**
- * Created by roderickWang on 8/18/15.
- */
-/**
  * Created by roderickWang on 8/13/15.
  */
 import React, { Component, PropTypes } from 'react';
@@ -16,7 +13,7 @@ export default class SideNav extends Component {
         this.state = {
             navMenu: props.navMenu.navMenu,
             selectIndex: null,
-            hoverIndex:null
+            hoverIndex: null
         }
     }
 
@@ -33,14 +30,20 @@ export default class SideNav extends Component {
                 {
                     list.map((menu1l, index)=> {
                             if (menu1l.children == null) {
-                                return <li style={extend(false,this.selectStyle(index),styles.noStyleLi)}
-                                           key={index}
-                                           onClick={this.selectNav.bind(this,index)}
-                                           onMouseOver={this.hover.bind(this,index)}
-                                           onMouseOut={this.leave.bind(this,index)}
-                                    >
-                                    {menu1l.text}
-                                </li>
+                                return (
+                                    <a style={{textDecoration:'none'}} href={menu1l.path}>
+                                        <li style={extend(false,this.selectStyle(index),styles.noStyleLi)}
+                                            key={index}
+                                            onClick={this.selectNav.bind(this,index)}
+                                            onMouseOver={this.hover.bind(this,index)}
+                                            onMouseOut={this.leave.bind(this,index)}
+                                            >
+
+                                            {menu1l.text}
+
+                                        </li>
+                                    </a>
+                                )
                             } else {
                                 return (
                                     <div key={index}>
@@ -58,16 +61,20 @@ export default class SideNav extends Component {
                                         <ol style={{padding:0,display:menu1l.hide?'none':'block'}}>
                                             {
                                                 menu1l.children.map((menu2l, index2)=> {
-                                                    return <li
-                                                        style={extend(false,this.selectStyle(index+','+index2),styles.noStyleLi,{paddingLeft:'35px'})}
-                                                        key={index+','+index2}
-                                                        onClick={this.selectNav.bind(this,index+','+index2)}
-                                                        onMouseOver={this.hover.bind(this,index+','+index2)}
-                                                        onMouseOut={this.leave.bind(this,index+','+index2)}
-                                                        >
-                                                        {menu2l.text}
+                                                    return (
+                                                        <a style={{textDecoration:'none'}} href={menu2l.path}>
+                                                            <li
+                                                                style={extend(false,this.selectStyle(index+','+index2),styles.noStyleLi,{paddingLeft:'35px'})}
+                                                                key={index+','+index2}
+                                                                onClick={this.selectNav.bind(this,index+','+index2)}
+                                                                onMouseOver={this.hover.bind(this,index+','+index2)}
+                                                                onMouseOut={this.leave.bind(this,index+','+index2)}
+                                                                >
+                                                                {menu2l.text}
 
-                                                    </li>
+                                                            </li>
+                                                        </a>
+                                                    )
                                                 })
                                             }
                                         </ol>
@@ -89,7 +96,7 @@ export default class SideNav extends Component {
             }
         }
 
-        if(path==this.state.hoverIndex){
+        if (path == this.state.hoverIndex) {
             return {
                 background: '#BCE8F1',
                 color: '#000'
@@ -118,13 +125,13 @@ export default class SideNav extends Component {
 
     hover(index) {
         this.setState({
-            hoverIndex:index
+            hoverIndex: index
         });
     }
 
-    leave(){
+    leave() {
         this.setState({
-            hoverIndex:null4
+            hoverIndex: null
         });
     }
 
@@ -144,4 +151,3 @@ export default class SideNav extends Component {
         return styles;
     }
 }
-
