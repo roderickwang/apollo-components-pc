@@ -11,7 +11,7 @@ export default class SideNav extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            navMenu: props.navMenu.navMenu,
+            navMenu: props.navMenu,
             selectIndex: null,
             hoverIndex: null
         }

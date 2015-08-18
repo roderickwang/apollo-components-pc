@@ -39,7 +39,7 @@ var SideNav = (function (_Component) {
 
         _get(Object.getPrototypeOf(SideNav.prototype), 'constructor', this).call(this, props);
         this.state = {
-            navMenu: props.navMenu.navMenu,
+            navMenu: props.navMenu,
             selectIndex: null,
             hoverIndex: null
         };
