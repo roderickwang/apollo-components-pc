@@ -109,7 +109,7 @@ class SearchInput extends Component {
     }
 
     componentWillReceiveProps(nextProps){
-        if (nextProps.list.length > 0&&this.focus) {
+        if (nextProps.list.length > 0 && this.focus) {
             let find = nextProps.list.filter(city=> {
                 return city[this.state.listText] ==this.state.text;
             });
