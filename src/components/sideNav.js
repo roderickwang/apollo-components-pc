@@ -31,9 +31,9 @@ export default class SideNav extends Component {
                     list.map((menu1l, index)=> {
                             if (menu1l.children == null) {
                                 return (
-                                    <a style={{textDecoration:'none'}} href={menu1l.path}>
-                                        <li style={extend(false,this.selectStyle(index),styles.noStyleLi)}
-                                            key={index}
+                                    <a style={{textDecoration:'none'}} href={menu1l.path} key={index}>
+                                        <li style={extend(false,this.selectStyle(index,menu1l.path),styles.noStyleLi)}
+
                                             onClick={this.selectNav.bind(this,index)}
                                             onMouseOver={this.hover.bind(this,index)}
                                             onMouseOut={this.leave.bind(this,index)}
@@ -47,7 +47,7 @@ export default class SideNav extends Component {
                             } else {
                                 return (
                                     <div key={index}>
-                                        <li style={styles.noStyleLi} key={index}
+                                        <li style={styles.noStyleLi}
                                             onClick={this.changeNavHide.bind(this,index)}
                                             >
                                             {menu1l.text}
@@ -62,10 +62,11 @@ export default class SideNav extends Component {
                                             {
                                                 menu1l.children.map((menu2l, index2)=> {
                                                     return (
-                                                        <a style={{textDecoration:'none'}} href={menu2l.path}>
+                                                        <a style={{textDecoration:'none'}} href={menu2l.path}
+                                                           key={index+','+index2}
+                                                            >
                                                             <li
-                                                                style={extend(false,this.selectStyle(index+','+index2),styles.noStyleLi,{paddingLeft:'35px'})}
-                                                                key={index+','+index2}
+                                                                style={extend(false,this.selectStyle(index+','+index2,menu2l.path),styles.noStyleLi,{paddingLeft:'35px'})}
                                                                 onClick={this.selectNav.bind(this,index+','+index2)}
                                                                 onMouseOver={this.hover.bind(this,index+','+index2)}
                                                                 onMouseOut={this.leave.bind(this,index+','+index2)}
@@ -88,12 +89,16 @@ export default class SideNav extends Component {
         )
     }
 
-    selectStyle(path) {
-        if (path == this.state.selectIndex) {
+    selectStyle(path,url) {
+        let hash=window.location.hash.replace('/','');
+
+        if (url === hash) {
             return {
                 background: '#3565AD',
                 color: '#fff'
-            }
+            };
+
+            return;
         }
 
         if (path == this.state.hoverIndex) {
@@ -109,7 +114,8 @@ export default class SideNav extends Component {
         }
     }
 
-    selectNav(index) {
+    selectNav(index,path) {
+        window.location=path;
         this.setState({
             selectIndex: index
         })
