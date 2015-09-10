@@ -2,10 +2,8 @@
  * Created by roderickWang on 8/13/15.
  */
 import React, { Component, PropTypes } from 'react';
-import publicStyle from '../decorators/PublicStyles.js'
-import extend from 'extend'
-import { bindActionCreators } from 'redux';
-import {Table,Pagination,Input} from 'react-bootstrap';
+import publicStyle from '../decorators/PublicStyles.js';
+import {Table, Pagination, Input} from 'react-bootstrap';
 
 @publicStyle
 export default
@@ -92,8 +90,8 @@ class DataGrid extends Component {
             activePage: select.eventKey
         });
         onSelect({
-            pageIndex:select.eventKey,
-            pageSize:this.state.pageSize
+            pageIndex: select.eventKey,
+            pageSize: this.state.pageSize
         })
     }
 
@@ -110,8 +108,8 @@ class DataGrid extends Component {
             pageSize: pageSize
         });
         onSelect({
-            pageIndex:this.state.activePage,
-            pageSize:pageSize
+            pageIndex: this.state.activePage,
+            pageSize: pageSize
         })
     }
 

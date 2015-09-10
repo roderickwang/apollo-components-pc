@@ -5,11 +5,11 @@ export default DecoratedComponent => {
         let styles = {
             fontBolder: {
                 fontWight: 'bolder',
-                textAlign:'right'
+                textAlign: 'right'
 
             },
-            formLabel:{
-                textAlign:'right'
+            formLabel: {
+                textAlign: 'right'
             },
             th: {
                 width: '10%',
@@ -22,7 +22,7 @@ export default DecoratedComponent => {
             td: {
                 border: 'none',
                 textAlign: 'center',
-                fontSize:'14px'
+                fontSize: '14px'
             },
             tr: {
                 border: '1px rgb(228, 228, 228) solid'
@@ -52,8 +52,8 @@ export default DecoratedComponent => {
                 color: '#337ab7',
                 fontSize: '14px'
             },
-            a:{
-                cursor:'pointer'
+            a: {
+                cursor: 'pointer'
             },
             addA: {
                 paddingLeft: 10,
@@ -64,18 +64,18 @@ export default DecoratedComponent => {
                 borderRadius: '10px',
                 backgroundColor: '#CDE0FC',
                 textAlign: 'center',
-                display:'inline-block',
-                marginLeft:'15px',
-                paddingLeft:'5px',
-                paddingRight:'5px',
-                position:'relative',
-                marginBottom:5,
-                width:'100px',
-                padding:5,
-                lineHeight:'14px'
+                display: 'inline-block',
+                marginLeft: '15px',
+                paddingLeft: '5px',
+                paddingRight: '5px',
+                position: 'relative',
+                marginBottom: 5,
+                width: '100px',
+                padding: 5,
+                lineHeight: '14px'
             },
             delCusDate: {
-                position:'absolute',
+                position: 'absolute',
                 border: 'solid 2px',
                 float: 'right',
                 borderRadius: 10,
@@ -87,8 +87,8 @@ export default DecoratedComponent => {
             red: {
                 color: 'red'
             },
-            col:{
-                marginTop:10
+            col: {
+                marginTop: 10
             },
             pager: {
                 float: 'right'
@@ -104,7 +104,7 @@ export default DecoratedComponent => {
         for (var i = 0; i < args.length; i++) {
             if (args[i]) {
                 Object.keys(args[i]).forEach((key) => {
-                    base[key]=args[i][key];
+                    base[key] = args[i][key];
                 });
             }
         }

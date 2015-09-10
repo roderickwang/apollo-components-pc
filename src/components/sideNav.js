@@ -89,8 +89,8 @@ export default class SideNav extends Component {
         )
     }
 
-    selectStyle(path,url) {
-        let hash=window.location.hash.replace('/','');
+    selectStyle(path, url) {
+        let hash = window.location.hash.replace('/', '');
 
         if (url === hash) {
             return {
@@ -114,8 +114,8 @@ export default class SideNav extends Component {
         }
     }
 
-    selectNav(index,path) {
-        window.location=path;
+    selectNav(index, path) {
+        window.location = path;
         this.setState({
             selectIndex: index
         })

@@ -31,20 +31,20 @@ class SearchInput extends Component {
     }
 
     toggle(event) {
-        this.focus=true;
+        this.focus = true;
 
         this.setState({
             text: event.target.value,
-            id:''
+            id: ''
         });
 
         //increase effective
         if (event.target.value != '') {
             clearInterval(this.requesting);
-            this.requesting=setTimeout((function(target) {
+            this.requesting = setTimeout((function (target) {
                 this.props.loadList(target.value);
 
-            }).bind(this,event.target),500);
+            }).bind(this, event.target), 500);
 
         }
     }
@@ -76,7 +76,7 @@ class SearchInput extends Component {
     }
 
     onBlur() {
-        this.focus=false;
+        this.focus = false;
         setTimeout(()=>this.setState(
             {show: false}
         ), 300)
@@ -84,12 +84,12 @@ class SearchInput extends Component {
 
     keyPress(event) {
         if (event.key == "ArrowDown") {
-            let max=this.props.list.length;
+            let max = this.props.list.length;
             if (this.state.overlaySelected == undefined) {
                 this.setState({
                     overlaySelected: '0'
                 });
-            } else if (this.state.overlaySelected < (max-1<4?max-1:4)) {
+            } else if (this.state.overlaySelected < (max - 1 < 4 ? max - 1 : 4)) {
                 this.setState({
                     overlaySelected: parseInt(this.state.overlaySelected) + 1
                 })
@@ -108,10 +108,10 @@ class SearchInput extends Component {
         }
     }
 
-    componentWillReceiveProps(nextProps){
+    componentWillReceiveProps(nextProps) {
         if (nextProps.list.length > 0 && this.focus) {
             let find = nextProps.list.filter(city=> {
-                return city[this.state.listText] ==this.state.text;
+                return city[this.state.listText] == this.state.text;
             });
             if (find.length > 0) {
                 nextProps.select(find[0][this.state.listKey]);
@@ -119,12 +119,12 @@ class SearchInput extends Component {
                 nextProps.select('');
             }
             this.setState({
-                show:true
+                show: true
             });
         } else {
-           // nextProps.select('');
+            // nextProps.select('');
             this.setState({
-                show:false
+                show: false
             });
         }
     }
@@ -156,7 +156,7 @@ class SearchInput extends Component {
                 );
             }
         }
-       
+
         return result;
     }
 
